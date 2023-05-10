@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { getCoordinates } from "./services/getCoordinates";
-
+import cardImg from "./assets/card/card.png";
 import "./App.css"
 import { getCurrentWeather } from "./services/getCurrentWeather";
 import { useState } from "react";
@@ -27,29 +27,41 @@ loadWeather();
   return (
     <>
     <h1>Weather App</h1>
+    <div className="search">
+      <input type= "text" placeholder= "Search location..."className="search" />
+    </div>
+    <div className="containerCard">
     { weather ? (
+      
       <>
-    <article>
-      <h2>{weather.weather.main}</h2>
-      <p>{weather.weather.description}</p>
-      <p>{isCelsius ? weather.temperature.celsius.toFixed(2) :weather.temperature.farenheit.toFixed(2)}{" "} 
+    <div className="card_slanted">
+      
+       <p className="temperatureGrades">{isCelsius ? weather.temperature.celsius.toFixed(2) :weather.temperature.farenheit.toFixed(2)}{" "} 
       ˚{isCelsius ? "C" : "F"}</p>
-      <div>
+      <h4>{weather.weather.main}</h4>
+      <h4>{weather.weather.description}</h4>
+     
+       <div className="weatherIcon">
         <img src = {weather.weather.icon} alt={weather.weather.description} />
-      </div>
-
-    <p>
+   </div>
+    <h2>
       {weather.city} , {weather.country}
-    </p>
-    </article>
-
-    <button onClick={() =>setisCelsius(!isCelsius)}>Change {isCelsius ? "F" : "C"}</button>
-    </>
+    </h2>
+    
+    
+    </div>
+    
+   
+    
+    
+    <button onClick={() =>setisCelsius(!isCelsius)}>Change to {isCelsius ? "F" : "C"}</button>
+   
+   </>
     ) : (
      <p>Loading weather...</p>
     )}
-     </>
+    </div> </>
+  
   );
-}
-
+} 
 export default App

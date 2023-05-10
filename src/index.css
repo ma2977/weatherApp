@@ -3,7 +3,10 @@
 *::before {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
+}
+@font-face {
+  font-family: "Lato";
+  src: url("./assets/fonts/Lato-BoldItalic.ttf") format("truetype");
 }
